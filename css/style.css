@@ -1,0 +1,111 @@
+
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-title {
+        font-size: 3rem;
+    }
+    
+    .subheader-title {
+        margin: 0rem;
+        padding: 0rem;
+    }
+    .subheader-description {
+        margin: 0rem;
+        padding: 0rem;
+    }
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid;
+}
+
+section.landing-page {
+    border-color: red;
+    background-color: aquamarine;
+    
+    div.get-started {
+        width: 50%;
+        height: 50%;
+        margin: 1rem;
+
+        button {
+            font-weight: 600;
+            color: red;
+        
+            width: 5em;
+            height: 20%;
+        }
+    }
+
+    #login-popover {
+        &:popover-open {
+            opacity: 1;
+            animation: show-section 750ms ease-out;
+        }
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
+}
+
+section.user-dashboard {
+    border-color: aqua;
+}
+
+section.add-product {
+    border-color: blueviolet;
+
+    label {
+        padding-right: 1rem;
+        border: 1px solid black;
+    }
+}
+
+section.display-table {
+    table {
+        display: block;
+        justify-content: center;
+    
+        th {
+            border: 1px solid black;
+            margin: 2rem;
+            padding: 0.5rem;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 0.5rem;
+        }
+    }
+}
+
+
+
+@keyframes show-section {
+    from {
+        opacity: 0;
+        transform: translateY(2rem)
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0rem)
+    }
+}

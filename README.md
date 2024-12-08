@@ -2,7 +2,7 @@
 
 > Create an application in connection with a Database
 
-## Tools:
+## Tools
 
 **Front-end:** HTML, CSS
 
@@ -12,7 +12,13 @@
 
 Started:
 
-    December 7, 2024 - 8:35pm
+    December 7, 2024 - 8:35pm (HAHAHAH SIKE)
+
+***
+
+Actually Started:
+
+    December 8, 2024 - 2:30pm
 
 Deadline:
 

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DBMS Final Project</title>
+        <link rel="stylesheet" href="../css/style.css"/>
+    </head>
+    <body>
+        <header>
+            <div class="header-title">
+                <h1>Turtle's Cup Cafe</h1>
+            </div>
+            <br>
+            <div class="subheader-title">
+                <h3>Turtle & Hare</h3>
+            </div>
+            <div class="subheader-description">
+                <h5>Inventory Management System</h5>
+            </div>
+        </header>
+    
+        <section class="landing-page">
+            <div class="get-started">
+                <button id="popover-show" popovertarget="login-popover">Get Started</button>                
+            </div>
+            <div id="login-popover" popover>
+                <form>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" placeholder="Enter your Username" required>
+    
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" placeholder="Enter your Password" required>
+    
+                    <button type="button">Log-in</button>
+                    <button type="reset">Clear</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="user-dashboard">
+            <form>
+                <button type="button" id="button-add-product">Add Product</button>
+                <br>
+                <button type="button" id="button-update-product">Update Product</button>
+                <br>
+                <button type="button" id="button-delete-product">Delete Product</button>
+                <br>
+                <button type="button" id="button-history">See History</button>
+            </form>    
+        </section>
+
+        <section class="add-product">
+            <div>
+                <form id="form-add-product">
+                    <label for="input-product-name">Product Name:</label>
+                    <input type="text" id="input-product-name" placeholder="Enter the Product Name" required>
+                    <br>
+                    <label for="input-category">Category:</label>
+                    <input type="text" id="input-category" placeholder="Enter the Category" required>
+                    <br>
+                    <label for="input-price">Price:</label>
+                    <input type="text" id="input-price" placeholder="Enter the Price" required>
+                    <br>
+                    <label for="input-quantity">Quantity:</label>
+                    <input type="text" id="input-quantity" placeholder="Enter the Quantity" required>
+                    <br>
+                    <input type="submit" id="button-add" value="Add Product">
+                    <br>
+                    <button type="reset"  id="button-clear">Clear</button>
+                </form>                
+            </div>
+        </section>
+        
+        <section class="display-table">
+            <table id="dynamic-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Product Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <td>dynamic table here</td> -->
+                </tbody>
+            </table>
+        </section>
+        
+        <section class="update-product">
+            <form>
+                <label for="input-update">Enter the Product ID you want to Update:</label>
+                <input type="text" id="input-update" placeholder="Enter the Product ID">
+            </form>
+        </section>
+        
+        <section class="delete-product">
+            <form>
+                <label for="input-delete">Enter the Product ID you want to Delete:</label>
+                <input type="text" id="input-delete" placeholder="Enter the Product ID">
+            </form>
+        </section>
+
+        <section class="history-log">
+            <table>
+
+            </table>
+        </section>
+
+        <footer>
+            <div class="footer">
+
+            </div>
+        </footer>
+    </body>
+</html>
