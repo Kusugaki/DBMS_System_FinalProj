@@ -1,29 +1,81 @@
+// Function to handle dynamic table updates
+function fetchProducts() {
+    fetch('/get-products')
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById('dynamic-table-tbody');
+            tableBody.innerHTML = ''; // Clear existing table rows
+
+            data.forEach(product => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${product.id}</td>
+                    <td>${product.product_name}</td>
+                    <td>${product.category}</td>
+                    <td>${product.price}</td>
+                    <td>${product.quantity}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }).catch(error => console.error('Error fetching products:', error));
+}
+// Call fetchProducts() to load data when the page loads
+document.addEventListener('DOMContentLoaded', fetchProducts);
+
+
 // Function to handle form submission
-function handleFormSubmission(url, data, formId) {
-    // Send a request to the Flask server
-    fetch(url, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Server response:', data);
+async function handleFormSubmission(url, data, formId) {
+    try {
+        // Send a request to the Flask server
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+
+        // Check if the response is ok (status in the range 200-299)
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const responseData = await response.json();
+        console.log('Server response:', responseData);
+
         // Optionally, reset the form after successful submission
         document.getElementById(formId).reset();
-    })
-    .catch(error => console.error('Error:', error));
+
+        // Return the response data if needed
+        return responseData;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error; // Rethrow the error to be handled by the caller
+    }
 }
 
-// Add product button click event
-document.getElementById('button-add').addEventListener('click', function(event) {
+// Log-in button click event
+document.getElementById('button-log-in').addEventListener('click', async function(event) {
     event.preventDefault(); // Prevent default form submission
 
     // FETCH FORM INPUTS
-    var product_name = document.getElementById('input-product-name').value;
-    var category     = document.getElementById('input-category').value;
-    var price        = document.getElementById('input-price').value;
-    var quantity     = document.getElementById('input-quantity').value;
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Prepare data object
+    var data = { username: username, password: password };
+
+    // Call the function to handle the fetch request
+    await handleFormSubmission('/log-in-input-event', data, 'form-log-in');
+});
+
+// Add product button click event
+document.getElementById('button-add').addEventListener('click', async function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // FETCH FORM INPUTS
+    const product_name = document.getElementById('input-product-name').value;
+    const category     = document.getElementById('input-category').value;
+    const price        = document.getElementById('input-price').value;
+    const quantity     = document.getElementById('input-quantity').value;
 
     // Prepare data object
     var data = {
@@ -32,25 +84,83 @@ document.getElementById('button-add').addEventListener('click', function(event) 
         price: price,
         quantity: quantity
     };
-
+    
     // Call the function to handle the fetch request
-    handleFormSubmission('/add-product-input-event', data, 'form-add-product');
+    await handleFormSubmission('/add-product-input-event', data, 'form-add-product');
+    
+    fetchProducts();
 });
 
-// Log-in button click event
-document.getElementById('button-log-in').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default form submission
+
+document.getElementById('button-delete').addEventListener('click', async function(event) {
+    event.preventDefault();
+    const product_id = document.getElementById('input-delete').value;
+    var data = { product_id: product_id };
+    await handleFormSubmission('/delete-input-event', data, 'form-delete-product');
+    fetchProducts();
+});
+
+
+document.getElementById('button-update').addEventListener('click', async function(event) {
+    event.preventDefault();
+
+    const checkbox = document.getElementById('input-update-checkbox');
+    if (!checkbox.checked) {
+        alert('Please confirm overwrite');
+        return;
+    }
 
     // FETCH FORM INPUTS
-    var username = document.getElementById('username').value;
-    var password = document.getElementById('password').value;
+    const product_id   = document.getElementById('input-update').value;
+    const product_name = document.getElementById('input-product-name').value;
+    const category     = document.getElementById('input-category').value;
+    const price        = document.getElementById('input-price').value;
+    const quantity     = document.getElementById('input-quantity').value;
 
     // Prepare data object
-    var data = {
-        username: username,
-        password: password
+    const data = {
+        product_id: product_id,
+        product_name: product_name,
+        category: category,
+        price: price,
+        quantity: quantity
     };
 
-    // Call the function to handle the fetch request
-    handleFormSubmission('/log-in-input-event', data, 'form-log-in');
+    await handleFormSubmission('/update-input-event', data, 'form-update-product');
+    // Clear form
+    document.getElementById('form-add-product').reset();
+
+    fetchProducts();
+
+});
+
+// function switchToAdminLogin() {
+//     document.querySelector("h1").innerText = "Admin Login";
+//     document.querySelector(".switch-link").innerText = "Switch to User Login";
+//     document.querySelector(".switch-link").onclick = switchToUserLogin;
+//     document.getElementById("user_type").value = "admin"; // Set user type to admin
+// }
+
+// function switchToUserLogin() {
+//     document.querySelector("h1").innerText = "User   Login";
+//     document.querySelector(".switch-link").innerText = "Switch to Admin Login";
+//     document.querySelector(".switch-link").onclick = switchToAdminLogin;
+//     document.getElementById("user_type").value = "user"; // Set user type to user
+// }
+
+document.getElementById('button-history').addEventListener('click', function load_log() {
+    console.log("HELLO WORLD");
+    fetch('static\\turtles_cup.log')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('log-content').innerText = data;
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
 });

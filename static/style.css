@@ -66,16 +66,28 @@ section.landing-page {
     }
 }
 
+
+
+/* Class to show the div */
+
 section.user-dashboard {
     border-color: aqua;
+    
 }
 
 section.add-product {
     border-color: blueviolet;
-
+    
     label {
         padding-right: 1rem;
         border: 1px solid black;
+    }
+
+    #update {
+        padding: 20px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        margin-top: 10px;
     }
 }
 
@@ -97,15 +109,29 @@ section.display-table {
     }
 }
 
+section.history-log {
+    #log-content {
+        color: black;
+        border: 1px solid #ccc;
+        padding: 10px;
+        height: 300px;
+        width: 80%;
+        overflow-y: scroll;
+        background-color: #f9f9f9;
+    }
+}
+
 
 
 @keyframes show-section {
     from {
         opacity: 0;
+        visibility: hidden;
         transform: translateY(2rem)
     }
     to {
         opacity: 1;
+        visibility: visible;
         transform: translateY(0rem)
     }
 }

@@ -50,25 +50,49 @@
         </section>
 
         <section class="add-product">
-            <div>
-                <form id="form-add-product">
+            <form id="form-add-product">
+                <div id="add">
                     <label for="input-product-name">Product Name:</label>
                     <input type="text" id="input-product-name" placeholder="Enter the Product Name" required>
-                    <br>
                     <label for="input-category">Category:</label>
-                    <input type="text" id="input-category" placeholder="Enter the Category" required>
-                    <br>
+                    <select id="input-category" placeholder="Select Category">
+                        <option value="" disabled selected>Select Category</option>
+                        <option>Hot</option>
+                        <option>Warm</option>
+                        <option>Mainit</option>
+                        <option>Iced</option>
+                        <option>Cold</option>
+                        <option>Malamig</option>
+                    </select>
                     <label for="input-price">Price:</label>
-                    <input type="text" id="input-price" placeholder="Enter the Price" required>
-                    <br>
+                    <input type="text" step="0.01" id="input-price" placeholder="Enter the Price" required>
                     <label for="input-quantity">Quantity:</label>
-                    <input type="text" id="input-quantity" placeholder="Enter the Quantity" required>
-                    <br>
+                    <input type="number" step="1" id="input-quantity" placeholder="Enter the Quantity" required>
                     <input type="submit" id="button-add" value="Add Product">
-                    <br>
                     <button type="reset"  id="button-clear">Clear</button>
-                </form>                
-            </div>
+                </div>
+
+                <div id="update">
+                    <p>Leave blank to solely add a product</p>
+                    <label for="input-update">Product ID:</label>
+                    <input type="text" id="input-update" placeholder="Enter the ID" required>
+                    
+                    <br>
+                    <label for="input-update-checkbox">Overwrite?:</label>
+                    <input type="checkbox" id="input-update-checkbox" placeholder="Overwrite?" required>
+                    <br>
+                    <input type="submit" id="button-update" value="Modify">
+                </div>
+
+                <div class="delete">
+                    <label for="input-delete">Enter the Product ID you want to Delete:</label>
+                    <input type="text" id="input-delete" placeholder="Enter the Product ID" required>
+                    
+                    <label for="input-delete-checkbox">Delete?:</label>
+                    <input type="checkbox" id="input-delete-checkbox" placeholder="Delete?" required>
+                    <input type="submit" id="button-delete" value="Confirm">
+                </div>
+            </form>
         </section>
         
         <section class="display-table">
@@ -82,30 +106,14 @@
                         <th>Quantity</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="dynamic-table-tbody">
                     <!-- <td>dynamic table here</td> -->
                 </tbody>
             </table>
         </section>
-        
-        <section class="update-product">
-            <form>
-                <label for="input-update">Enter the Product ID you want to Update:</label>
-                <input type="text" id="input-update" placeholder="Enter the Product ID">
-            </form>
-        </section>
-        
-        <section class="delete-product">
-            <form>
-                <label for="input-delete">Enter the Product ID you want to Delete:</label>
-                <input type="text" id="input-delete" placeholder="Enter the Product ID">
-            </form>
-        </section>
 
         <section class="history-log">
-            <table>
-
-            </table>
+            <div id="log-content"></div>
         </section>
 
         <footer>

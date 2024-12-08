@@ -1,0 +1,87 @@
+2024-12-09 04:49:42,999 - __main__ - INFO	- Starting Flask application.
+2024-12-09 04:49:43,066 - werkzeug - INFO	- [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-09 04:49:43,066 - werkzeug - INFO	- [33mPress CTRL+C to quit[0m
+2024-12-09 04:49:43,069 - werkzeug - INFO	-  * Restarting with stat
+2024-12-09 04:49:43,880 - __main__ - INFO	- Starting Flask application.
+2024-12-09 04:49:43,916 - werkzeug - WARNING	-  * Debugger is active!
+2024-12-09 04:49:43,926 - werkzeug - INFO	-  * Debugger PIN: 115-084-137
+2024-12-09 04:50:05,734 - __main__ - INFO	- Log-in attempt: username = 'donatello'
+2024-12-09 04:50:05,744 - donatello - INFO	- Log-in Successful.
+2024-12-09 04:50:05,747 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:50:05] "POST /log-in-input-event HTTP/1.1" 200 -
+2024-12-09 04:50:24,531 - donatello - INFO	- Add product button pressed.
+2024-12-09 04:50:24,559 - donatello - INFO	- Product added: americano, Category: Mainit, Price: 129, Quantity: 34
+2024-12-09 04:50:24,559 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:50:24] "POST /add-product-input-event HTTP/1.1" 200 -
+2024-12-09 04:50:24,586 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:50:24] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 04:51:45,664 - __main__ - INFO	- Starting Flask application.
+2024-12-09 04:51:45,711 - werkzeug - INFO	- [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-09 04:51:45,711 - werkzeug - INFO	- [33mPress CTRL+C to quit[0m
+2024-12-09 04:51:45,712 - werkzeug - INFO	-  * Restarting with stat
+2024-12-09 04:51:46,541 - __main__ - INFO	- Starting Flask application.
+2024-12-09 04:51:46,578 - werkzeug - WARNING	-  * Debugger is active!
+2024-12-09 04:51:46,589 - werkzeug - INFO	-  * Debugger PIN: 115-084-137
+2024-12-09 04:54:20,768 - __main__ - INFO	- Starting Flask application.
+2024-12-09 04:54:20,820 - werkzeug - INFO	- [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-09 04:54:20,821 - werkzeug - INFO	- [33mPress CTRL+C to quit[0m
+2024-12-09 04:54:20,821 - werkzeug - INFO	-  * Restarting with stat
+2024-12-09 04:54:21,632 - __main__ - INFO	- Starting Flask application.
+2024-12-09 04:54:21,663 - werkzeug - WARNING	-  * Debugger is active!
+2024-12-09 04:54:21,669 - werkzeug - INFO	-  * Debugger PIN: 115-084-137
+2024-12-09 04:54:32,298 - __main__ - INFO	- Home page accessed.
+2024-12-09 04:54:32,301 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:54:32] "GET / HTTP/1.1" 200 -
+2024-12-09 04:54:32,450 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:54:32] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 04:54:32,466 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:54:32] "GET /static/script.js HTTP/1.1" 200 -
+2024-12-09 04:54:32,494 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:54:32] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 04:54:34,769 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:54:34] "[33mGET /turtles_cup.log HTTP/1.1[0m" 404 -
+2024-12-09 04:54:35,442 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:54:35] "[33mGET /turtles_cup.log HTTP/1.1[0m" 404 -
+2024-12-09 04:57:15,491 - __main__ - INFO	- Starting Flask application.
+2024-12-09 04:57:15,539 - werkzeug - INFO	- [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-09 04:57:15,540 - werkzeug - INFO	- [33mPress CTRL+C to quit[0m
+2024-12-09 04:57:15,545 - werkzeug - INFO	-  * Restarting with stat
+2024-12-09 04:57:16,367 - __main__ - INFO	- Starting Flask application.
+2024-12-09 04:57:16,402 - werkzeug - WARNING	-  * Debugger is active!
+2024-12-09 04:57:16,408 - werkzeug - INFO	-  * Debugger PIN: 115-084-137
+2024-12-09 04:57:44,587 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:57:44] "[33mGET /turtles_cup.log HTTP/1.1[0m" 404 -
+2024-12-09 04:57:47,207 - __main__ - INFO	- Home page accessed.
+2024-12-09 04:57:47,215 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:57:47] "GET / HTTP/1.1" 200 -
+2024-12-09 04:57:47,366 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:57:47] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 04:57:47,385 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:57:47] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 04:57:47,413 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:57:47] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 04:57:50,759 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:57:50] "[33mGET /turtles_cup.log HTTP/1.1[0m" 404 -
+2024-12-09 04:58:26,268 - __main__ - INFO	- Home page accessed.
+2024-12-09 04:58:26,269 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:58:26] "GET / HTTP/1.1" 200 -
+2024-12-09 04:58:26,289 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:58:26] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 04:58:26,314 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:58:26] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 04:58:26,349 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:58:26] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 04:58:29,485 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:58:29] "[33mGET /turtles_cup.log HTTP/1.1[0m" 404 -
+2024-12-09 04:58:32,071 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:58:32] "[33mGET /turtles_cup.log HTTP/1.1[0m" 404 -
+2024-12-09 04:58:32,306 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:58:32] "[33mGET /turtles_cup.log HTTP/1.1[0m" 404 -
+2024-12-09 04:58:54,082 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 04:58:54] "[33mGET /turtles_cup.log HTTP/1.1[0m" 404 -
+2024-12-09 04:59:56,166 - __main__ - INFO	- Starting Flask application.
+2024-12-09 04:59:56,222 - werkzeug - INFO	- [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-09 04:59:56,223 - werkzeug - INFO	- [33mPress CTRL+C to quit[0m
+2024-12-09 04:59:56,227 - werkzeug - INFO	-  * Restarting with stat
+2024-12-09 04:59:57,308 - __main__ - INFO	- Starting Flask application.
+2024-12-09 04:59:57,344 - werkzeug - WARNING	-  * Debugger is active!
+2024-12-09 04:59:57,352 - werkzeug - INFO	-  * Debugger PIN: 115-084-137
+2024-12-09 05:00:00,844 - __main__ - INFO	- Home page accessed.
+2024-12-09 05:00:00,851 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:00:00] "GET / HTTP/1.1" 200 -
+2024-12-09 05:00:00,970 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:00:00] "GET /static/script.js HTTP/1.1" 200 -
+2024-12-09 05:00:00,990 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:00:00] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 05:00:01,011 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:00:01] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 05:00:03,471 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:00:03] "[33mGET /turtles_cup.log HTTP/1.1[0m" 404 -
+2024-12-09 05:00:08,999 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:00:08] "[33mGET /turtles_cup.log HTTP/1.1[0m" 404 -
+2024-12-09 05:00:33,476 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:00:33] "[33mGET /turtles_cup.log HTTP/1.1[0m" 404 -
+2024-12-09 05:00:34,984 - __main__ - INFO	- Home page accessed.
+2024-12-09 05:00:34,985 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:00:34] "GET / HTTP/1.1" 200 -
+2024-12-09 05:00:35,001 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:00:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-09 05:00:35,003 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:00:35] "GET /static/script.js HTTP/1.1" 200 -
+2024-12-09 05:00:35,040 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:00:35] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 05:01:03,647 - __main__ - INFO	- Delete request for product ID: 
+2024-12-09 05:01:03,658 - __main__ - WARNING	- No product found with the given ID.
+2024-12-09 05:01:03,661 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:01:03] "[33mPOST /delete-input-event HTTP/1.1[0m" 404 -
+2024-12-09 05:01:09,231 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:01:09] "GET /static/turtles_cup.log HTTP/1.1" 200 -
