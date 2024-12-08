@@ -10,15 +10,19 @@
 
 **Database:** MySQL
 
-Started:
+Started SIKE:
 
     December 7, 2024 - 8:35pm (HAHAHAH SIKE)
 
+Actually Started SIKE:
+
+    December 8, 2024 - 2:30pm (HAHAHAHHA SIKE AGAIN F YOU INCOMPATIBILITY)
+
 ***
 
-Actually Started:
+Actually Actually Started:
 
-    December 8, 2024 - 2:30pm
+    December 8, 2024 - 8:00pm
 
 Deadline:
 
