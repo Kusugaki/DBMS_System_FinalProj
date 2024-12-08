@@ -61,10 +61,24 @@ document.getElementById('button-log-in').addEventListener('click', async functio
     const password = document.getElementById('password').value;
 
     // Prepare data object
-    var data = { username: username, password: password };
+    const data = { username: username, password: password };
 
     // Call the function to handle the fetch request
-    await handleFormSubmission('/log-in-input-event', data, 'form-log-in');
+    const reply = await handleFormSubmission('/log-in-input-event', data, 'form-log-in');
+
+    if (reply.role === "admin") {
+        
+    }
+    // FETCH dashboard section to handle visibility 
+    const section = document.getElementById("user-dash");
+
+    // toggle show dashboard
+    if (section.classList.contains("hidden")) {
+        section.classList.remove("hidden");
+    } else {
+        section.classList.add("hidden");
+    }
+
 });
 
 // Add product button click event
@@ -163,4 +177,14 @@ document.getElementById('button-history').addEventListener('click', function loa
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
         });
+});
+
+function toggle_hidden() {
+    const section = document.getElementById('user-dashboard');
+    section.classList.toggle('hidden'); // Toggles the 'hidden' class
+}
+
+document.getElementById("button-log-out").addEventListener('click', function(event) {
+    event.preventDefault();
+
 });
