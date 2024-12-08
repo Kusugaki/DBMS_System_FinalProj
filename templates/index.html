@@ -2,7 +2,8 @@
 <html lang="en">
     <head>
         <title>DBMS Final Project</title>
-        <link rel="stylesheet" href="../css/style.css"/>
+        <link rel="stylesheet" href="../static/style.css">
+        <script src="../static/script.js" defer></script>
     </head>
     <body>
         <header>
@@ -23,14 +24,14 @@
                 <button id="popover-show" popovertarget="login-popover">Get Started</button>                
             </div>
             <div id="login-popover" popover>
-                <form>
+                <form id="form-log-in">
                     <label for="username">Username:</label>
                     <input type="text" id="username" placeholder="Enter your Username" required>
     
                     <label for="password">Password:</label>
                     <input type="password" id="password" placeholder="Enter your Password" required>
     
-                    <button type="button">Log-in</button>
+                    <input type="submit" id="button-log-in"value="Log-in">
                     <button type="reset">Clear</button>
                 </form>
             </div>
@@ -109,7 +110,7 @@
 
         <footer>
             <div class="footer">
-
+                <p>&copy; 2024 Turtle's Cup Cafe. All rights reserved.</p>
             </div>
         </footer>
     </body>

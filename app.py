@@ -1,61 +1,66 @@
 from flask import Flask, render_template, request, jsonify
 from mysql import connector
-
-# Imports external file with Username, Password, and Database Name
 import database_credentials as dbc
 
 # IMPORTANT INITIALIZATIONS
+app = Flask(__name__)
 
-''' local Server (Flask) initialization '''
-server = Flask(__name__)
+def create_database_and_tables():
+    """Create database and tables if they do not exist."""
+    connection = connector.connect(
+        host="localhost",
+        user=dbc.USERNAME,
+        passwd=dbc.PASSWORD
+    )
+    cursor = connection.cursor()
+    cursor.execute(f"CREATE DATABASE IF NOT EXISTS {dbc.DATABASE_NAME};")
+    cursor.execute(f"USE {dbc.DATABASE_NAME};")
 
-''' MySQL Database Initializations '''
-SQL_CONNECTION = connector.connect(
-    host="localhost",
-    user=dbc.USERNAME,
-    passwd=dbc.PASSWORD,
-    database=dbc.DATABASE_NAME
-)
-SQL_CURSOR = SQL_CONNECTION.cursor()
+    cursor.execute(f"""
+        CREATE TABLE IF NOT EXISTS {dbc.INVENTORY_TABLE_NAME} (
+            id INT AUTO_INCREMENT PRIMARY KEY, 
+            product_name VARCHAR(50) NOT NULL,
+            category VARCHAR(50) NOT NULL,
+            price DECIMAL(15, 4) NOT NULL,
+            quantity MEDIUMINT NOT NULL
+        );
+    """)
 
-@server.route('/')
-def home():
-    return render_template('index.html')
+    cursor.execute(f"""
+        CREATE TABLE IF NOT EXISTS {dbc.ACCOUNTS_TABLE_NAME} (
+            account_id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(20) NOT NULL,
+            password VARCHAR(50) NOT NULL
+        );
+    """)
 
-@server.route('/input-event', methods=['POST'])
-def add_product_input_event():
-    # Gets values from replied JavaScript JSON response
-    product_name = request.get_json()['product_name']
-    category     = request.get_json()['category']
-    price        = request.get_json()['price']
-    quantity     = request.get_json()['quantity']
-
-    # Queries form inputs into MySQL database
-    sql_query = f"""
-    INSERT INTO {dbc.TABLE_NAME} (product_name, category, price, quantity) 
-    VALUES ({product_name}, {category}, {price}, {quantity})
-    """
-    SQL_CURSOR.execute(sql_query)
-
-    # Saves query to MySQL database
-    SQL_CURSOR.commit()
-
-    # Process the input value and return a response
-    response = { 'message': 'Input value received successfully' }
-    return jsonify(response)
+    connection.commit()
+    cursor.close()
+    connection.close()
 
 
-if __name__ == "__main__":
-    server.run(debug=True)
+create_database_and_tables()
 
 
+# Utility Function
+def connect_to_sql():
+    return connector.connect(
+        host="localhost",
+        user=dbc.USERNAME,
+        passwd=dbc.PASSWORD,
+        database=dbc.DATABASE_NAME
+    )
 
-
+# Utility Function
 def fetch_sql_data():
-    SQL_CURSOR.execute(f"SELECT * FROM {dbc.TABLE_NAME}")
+    """Fetch all data from the inventory table."""
+    connection = connect_to_sql()
+    cursor = connection.cursor()
+    cursor.execute(f"SELECT * FROM {dbc.INVENTORY_TABLE_NAME}")
+    sql_data = cursor.fetchall()
+    cursor.close()
+    connection.close()
 
-    sql_data = SQL_CURSOR.fetchall()
-   
     try: 
         assert len(sql_data[0]) == 5
         for record in sql_data:
@@ -63,36 +68,78 @@ def fetch_sql_data():
     except AssertionError:
         print("temp_assertionerror")
         yield None, None, None, None, None
-        
-            
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/add-product-input-event', methods=['POST'])
+def add_product_input_event():
+    print("ADD PRODUCT BUTTON PRESSED")
+    data = request.get_json()
+
+    product_name = data['product_name']
+    category = data['category']
+    price = data['price']
+    quantity = data['quantity']
+
+    sql_query = f"""
+    INSERT INTO {dbc.INVENTORY_TABLE_NAME} (product_name, category, price, quantity) 
+    VALUES (%s, %s, %s, %s);
+    """
+
+    connection = connect_to_sql()
+    cursor = connection.cursor()
+    cursor.execute(sql_query, (product_name, category, price, quantity))
+    connection.commit()
+    cursor.close()
+    connection.close()
+
+    for i in fetch_sql_data():
+        print(i)
+
+    response = {'message': 'Input value received successfully'}
+    return jsonify(response)
+
+@app.route('/log-in-input-event', methods=['POST'])
+def log_in():
+    username = request.get_json()['username']
+    password = request.get_json()['password']
+
+    sql_query = f"""
+    SELECT * FROM {dbc.ACCOUNTS_TABLE_NAME}
+    WHERE username = %s AND password = %s;
+    """
+
+    connection = connect_to_sql()
+    cursor = connection.cursor()
+
+    try:
+        cursor.execute(sql_query, (username, password))
+        account_data = cursor.fetchall()
+
+        # if fetched data is EMPTY or NULL/NONE
+        if not account_data:
+            print("No account found")
+            return jsonify({'message': 'Log-in Failed'}), 401
+
+        sql_username = account_data[0][1]
+        sql_password = account_data[0][2]
+
+        if username == sql_username and password == sql_password:
+            print("Log-in Successful")
+            return jsonify({'message': 'Log-in Successful'})
+        else:
+            print ("Log-in Failed")
+            return jsonify({'message': 'Log-in Failed'}), 401
+
+    except Exception as e:
+        print(f"Database error: {e}")
+        return jsonify({'message': 'Database error'}), 500
+    finally:
+        cursor.close()
+        connection.close()
 
 
-
-
-def modify_by_product_id(product_id):
-    ...
-
-
-def add_to_dynamic_table(product_name, category, price, quantity) -> None:
-    # HTML element ID
-    table_id = "dynamic-table"
-
-    # Get the table body
-    table_body = document.getElementById(table_id).getElementsByTagName("tbody")[0]
-    
-    # Create a new Table Row
-    new_row = document.createElement("tr")
-    
-    # Create and append cells (Table Data) for the new row
-    for value in [product_name, category, price, quantity]:
-        cell = document.createElement("td")
-        cell.textContent = value
-        new_row.appendChild(cell)
-    
-    # Append the row to the table body
-    table_body.appendChild(new_row)
-    
-
-
-# Attach the function to the button click
-document.getElementById("button-add").addEventListener("click", create_proxy(add_product))
+if __name__ == "__main__":
+    app.run(debug=True)
