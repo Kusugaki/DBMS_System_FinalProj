@@ -13,7 +13,6 @@ body {
 
 .hidden {
     display: none;
-    visibility: none;
 }
 
 /* Header Styles */
@@ -22,15 +21,6 @@ header {
     background-color: #4CAF50; /* Green background */
     color: white;
     padding: 10px 0;
-}
-
-.landing-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 2rem;
-    padding: 10%;
-    border: 1px solid red;
 }
 
 /* Container for the layout */

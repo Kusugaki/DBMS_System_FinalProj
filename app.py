@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, session
 from mysql import connector
 import logging
 import database_credentials as dbc
@@ -27,6 +27,7 @@ logger = logging.getLogger(__name__)
 
 # MAIN APPLICATION SERVER INITIALIZATION
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Set this to a random secret key
 
 
 def create_database_and_tables():
@@ -55,16 +56,14 @@ def create_database_and_tables():
                 account_id INT AUTO_INCREMENT PRIMARY KEY,
                 username VARCHAR(20) NOT NULL,
                 password VARCHAR(50) NOT NULL,
-                role VARCHAR(15) NOT NULL
+                role VARCHAR(10) NOT NULL
             );
         """)
         connection.commit()
     connection.close()
 
-
 # MySQL Initialization
 create_database_and_tables()
-
 
 # Utility Function to Connect to SQL
 def connect_to_sql():
@@ -112,6 +111,11 @@ def log_in():
     username = request.get_json().get('username')
     password = request.get_json().get('password')
 
+    # Username validation
+    if not username or len(username) < 3:
+        logger.warning("Username validation failed.")
+        return jsonify({'message': 'Invalid username. Must be at least 3 characters long.'}), 400
+
     sql_query = f"""
     SELECT username, password, role
     FROM {dbc.ACCOUNTS_TABLE_NAME}
@@ -119,8 +123,6 @@ def log_in():
     """
 
     logger.info(f"Log-in attempt: {username = }")
-    logger.name = username
-
     connection = connect_to_sql()
     if connection is None:
         logger.error("Database connection failed.")
@@ -141,12 +143,9 @@ def log_in():
 
             if username == sql_username and password == sql_password:
                 logger.info("Log-in Successful.")
-                
-                # Return different messages based on user role
-                if sql_role == 'admin':
-                    return jsonify({'message': 'Log-in Successful', 'role': 'admin'})
-                else:
-                    return jsonify({'message': 'Log-in Successful', 'role': 'employee'})
+                session['username'] = sql_username
+                session['role']     = sql_role
+                return jsonify({'message': 'Log -in Successful', 'role': sql_role})
             else:
                 logger.warning("Log-in Failed: Incorrect credentials.")
                 return jsonify({'message': 'Log-in Failed'}), 401
@@ -156,6 +155,18 @@ def log_in():
         return jsonify({'message': 'Database error'}), 500
     finally:
         connection.close()
+
+@app.route('/is-logged-in', methods=['GET'])
+def is_logged_in():
+    if 'username' in session:
+        return jsonify({'logged_in': True, 'role': session['role']})
+    return jsonify({'logged_in': False}), 401
+
+@app.route('/logout', methods=['POST'])
+def logout():
+    session.clear()  # Clear the session
+    logger.info("User logged out successfully.")
+    return jsonify({'message': 'Logged out successfully'})
 
 
 @app.route('/get-products', methods=['GET'])
