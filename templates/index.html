@@ -40,9 +40,34 @@
 
             <section id="user-dash" class="hidden">
                 <form>
-                    <button type="button" id="button-history">See History</button>
+                    {% if session['role'] == 'admin' %}
+                    <button type="button" id="button-history">View History</button>
+                    <br>
+                    <button type="button" id="create-account">Create Account</button>
+                    {% endif %}
                     <br>
                     <button type="button" id="button-log-out">Log-out</button>
+                </form>
+            </section>
+            
+            <!-- Create Account Form -->
+            <section id="create-account-form" class="hidden">
+                <h2>Create Account</h2>
+                <form onsubmit="submitCreateAccountForm(event)">
+                    <label for="username">Username:</label>
+                    <input type="text" id="create-username" name="username" required>
+                    <br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="create-password" name="password" required>
+                    <br>
+                    <label for="role">Role:</label>
+                    <select id="role" name="role" required>
+                        <option value="employee">Employee</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <br>
+                    <button type="submit">Create Account</button>
+                    <button type="button" onclick="hideCreateAccountForm()">Cancel</button>
                 </form>
             </section>
 

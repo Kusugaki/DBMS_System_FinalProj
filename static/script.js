@@ -183,4 +183,37 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Error logging out.');
         }
     });
+
+    async function submitCreateAccountForm(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const username = document.getElementById('create-username').value;
+        const password = document.getElementById('create-password').value;
+        const role     = document.getElementById('role').value;
+
+        const response = await fetch('/create-account', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username: username, 
+                                   password: password, 
+                                   role: role }),
+        });
+
+        const result = await response.json();
+        alert(result.message); // Show the response message
+
+        if (response.ok) {
+            document.getElementById('create-account-form').classList.add('hidden');; // Hide the form on success
+        }
+    }
+
+    // Attach the submit function to the form
+    document.getElementById('create-account-form').addEventListener('submit', submitCreateAccountForm);
+
+    document.getElementById('create-account').addEventListener('click', function showCreateAccountForm() {
+        document.getElementById('create-account-form').classList.remove('hidden');
+    });
+
 });

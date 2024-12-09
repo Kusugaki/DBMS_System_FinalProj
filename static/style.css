@@ -23,8 +23,18 @@ header {
     text-align: center;
     background-color: #4CAF50; /* Green background */
     color: white;
-    padding: 20px 0; /* Increased padding for better spacing */
+    padding: 10px 0; /* Increased padding for better spacing */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+
+    h1 {
+        font-size: 3rem;
+    }
+    h3 {
+        font-size: 2rem;
+    }
+    h5 {
+        font-size: 1rem;
+    }
 }
 
 /* Popover Styles */
@@ -50,6 +60,10 @@ header {
     position: absolute;
     top: 35%;
     left: calc(85vh);
+
+}
+#login-popover::backdrop {
+    background-color: rgba(0,0,0,0.6);
 }
 
 /* Popover Form Styles */

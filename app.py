@@ -142,7 +142,7 @@ def log_in():
             sql_role     = account_data[0][2]  # Fetch the role
 
             if username == sql_username and password == sql_password:
-                logger.info("Log-in Successful.")
+                logger.info("Log-in Successful. role =", sql_role)
                 session['username'] = sql_username
                 session['role']     = sql_role
                 return jsonify({'message': 'Log -in Successful', 'role': sql_role})
@@ -313,6 +313,63 @@ def update_product():
     except Exception as e:
         logger.error(f"Database error: {e}")
         return jsonify({'message': 'Database update error'}), 500
+    finally:
+        connection.close()
+
+
+@app.route('/create-account', methods=['POST'])
+def create_account():
+    data = request.get_json()
+    
+    username = data.get('username')
+    password = data.get('password')
+    role     = data.get('role')
+
+    print(f"{username = }, {password = }, {role = }")
+
+    # Username validation
+    if not username or len(username) < 3:
+        logger.warning("Username validation failed.")
+        return jsonify({'message': 'Invalid username. Must be at least 3 characters long.'}), 400
+
+    if not password or len(password) < 6:
+        logger.warning("Password validation failed.")
+        return jsonify({'message': 'Invalid password. Must be at least 6 characters long.'}), 400
+
+    # Check if the username already exists
+    sql_query_check = f"""
+    SELECT username FROM {dbc.ACCOUNTS_TABLE_NAME}
+    WHERE username = %s;
+    """
+
+    connection = connect_to_sql()
+    if connection is None:
+        logger.error("Database connection failed.")
+        return jsonify({'message': 'Database connection failed'}), 500
+
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(sql_query_check, (username,))
+            existing_user = cursor.fetchone()
+
+            if existing_user:
+                logger.warning("Username already exists.")
+                return jsonify({'message': 'Username already exists. Please choose a different one.'}), 400
+
+            # Insert new user into the database
+            sql_query_insert = f"""
+            INSERT INTO {dbc.ACCOUNTS_TABLE_NAME} (username, password, role)
+            VALUES (%s, %s, %s);
+            """
+            cursor.execute(sql_query_insert, (username, password, role))
+            connection.commit()
+
+            logger.info("Account created successfully.")
+            return jsonify({'message': 'Account created successfully!'}), 201
+
+    except Exception as e:
+        logger.error(f"Database error: {e}")
+        return jsonify({'message': 'Database error'}), 500
     finally:
         connection.close()
 
