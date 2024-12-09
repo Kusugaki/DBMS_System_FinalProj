@@ -1,11 +1,13 @@
-// Function to handle dynamic table updates
-function fetchProducts() {
-    fetch('/get-products')
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Function to handle dynamic table updates
+    function fetchProducts() {
+        fetch('/get-products')
         .then(response => response.json())
         .then(data => {
             const tableBody = document.getElementById('dynamic-table-tbody');
             tableBody.innerHTML = ''; // Clear existing table rows
-
+            
             data.forEach(product => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -14,173 +16,145 @@ function fetchProducts() {
                     <td>${product.category}</td>
                     <td>${product.price}</td>
                     <td>${product.quantity}</td>
-                `;
+                    `;
                 tableBody.appendChild(row);
             });
         }).catch(error => console.error('Error fetching products:', error));
-}
-// Call fetchProducts() to load data when the page loads
-document.addEventListener('DOMContentLoaded', fetchProducts);
-
-
-// Function to handle form submission
-async function handleFormSubmission(url, data, formId) {
-    try {
-        // Send a request to the Flask server
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(data)
-        });
-
-        // Check if the response is ok (status in the range 200-299)
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-
-        const responseData = await response.json();
-        console.log('Server response:', responseData);
-
-        // Optionally, reset the form after successful submission
-        document.getElementById(formId).reset();
-
-        // Return the response data if needed
-        return responseData;
-    } catch (error) {
-        console.error('Error:', error);
-        throw error; // Rethrow the error to be handled by the caller
     }
-}
 
-// Log-in button click event
-document.getElementById('button-log-in').addEventListener('click', async function(event) {
-    event.preventDefault(); // Prevent default form submission
+    // Call fetchProducts() to load data when the page loads
+    document.addEventListener('DOMContentLoaded', fetchProducts);
 
-    // FETCH FORM INPUTS
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    // Function to handle form submission
+    async function handleFormSubmission(url, data, formId) {
+        try {
+            // Send a request to the Flask server
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            });
+            
+            // Check if the response is ok (status in the range 200-299)
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            
+            const responseData = await response.json();
+            console.log('Server response:', responseData);
+            
+            // Optionally, reset the form after successful submission
+            document.getElementById(formId).reset();
+            
+            // Return the response data if needed
+            return responseData;
+        } catch (error) {
+            console.error('Error:', error);
+            throw error; // Rethrow the error to be handled by the caller
+        }
+    }
 
-    // Prepare data object
-    const data = { username: username, password: password };
-
-    // Call the function to handle the fetch request
-    const reply = await handleFormSubmission('/log-in-input-event', data, 'form-log-in');
-
-    if (reply.role === "admin") {
-        window.location.assign('..\\templates\\admin.html')
-    } else {
+    // Log-in button click event
+    document.getElementById('button-log-in').addEventListener('click', async function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        // FETCH FORM INPUTS
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        // Prepare data object
+        const data = { username: username, password: password };
+        
+        // Call the function to handle the fetch request
+        const reply = await handleFormSubmission('/log-in-input-event', data, 'form-log-in');
+        
+        if (reply.role === "admin") {
+            window.location.assign('admin');
+        } else {
+            window.location.assign('employee');
+        }
         
         // FETCH dashboard section to handle visibility 
         const section_dash = document.getElementById("user-dash");
-        const section_add = document.getElementById("add-product");
-        const section_table = document.getElementById("display-table");
-
+        
         // toggle show dashboard
         if (section_dash.classList.contains("hidden")) {
             section_dash.classList.remove("hidden");
         } else {
             section_dash.classList.add("hidden");
         }
-        // toggle show add-product
-        if (section_add.classList.contains("hidden")) {
-            section_add.classList.remove("hidden");
-        } else {
-            section_add.classList.add("hidden");
+    });
+
+    // Add product button click event
+    document.getElementById('button-add').addEventListener('click', async function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        // FETCH FORM INPUTS
+        const product_name = document.getElementById('input-product-name').value;
+        const category     = document.getElementById('input-category').value;
+        const price        = document.getElementById('input-price').value;
+        const quantity     = document.getElementById('input-quantity').value;
+        
+        // Prepare data object
+        var data = {
+            product_name: product_name,
+            category: category,
+            price: price,
+            quantity: quantity
+        };
+        
+        // Call the function to handle the fetch request
+        await handleFormSubmission('/add-product-input-event', data, 'form-add-product');
+        
+        fetchProducts();
+    });
+
+
+    document.getElementById('button-delete').addEventListener('click', async function(event) {
+        event.preventDefault();
+        const product_id = document.getElementById('input-delete').value;
+        var data = { product_id: product_id };
+        await handleFormSubmission('/delete-input-event', data, 'form-delete-product');
+        fetchProducts();
+    });
+
+
+    document.getElementById('button-update').addEventListener('click', async function(event) {
+        event.preventDefault();
+        
+        const checkbox = document.getElementById('input-update-checkbox');
+        if (!checkbox.checked) {
+            alert('Please confirm overwrite');
+            return;
         }
-        // toggle show display-table
-        if (section_table.classList.contains("hidden")) {
-            section_table.classList.remove("hidden");
-        } else {
-            section_table.classList.add("hidden");
-        }
-    }
 
-});
+        // FETCH FORM INPUTS
+        const product_id   = document.getElementById('input-update').value;
+        const product_name = document.getElementById('input-product-name').value;
+        const category     = document.getElementById('input-category').value;
+        const price        = document.getElementById('input-price').value;
+        const quantity     = document.getElementById('input-quantity').value;
+        
+        // Prepare data object
+        const data = {
+            product_id: product_id,
+            product_name: product_name,
+            category: category,
+            price: price,
+            quantity: quantity
+        };
+        
+        await handleFormSubmission('/update-input-event', data, 'form-update-product');
+        // Clear form
+        document.getElementById('form-add-product').reset();
+        
+        fetchProducts();
+        
+    });
 
-// Add product button click event
-document.getElementById('button-add').addEventListener('click', async function(event) {
-    event.preventDefault(); // Prevent default form submission
-
-    // FETCH FORM INPUTS
-    const product_name = document.getElementById('input-product-name').value;
-    const category     = document.getElementById('input-category').value;
-    const price        = document.getElementById('input-price').value;
-    const quantity     = document.getElementById('input-quantity').value;
-
-    // Prepare data object
-    var data = {
-        product_name: product_name,
-        category: category,
-        price: price,
-        quantity: quantity
-    };
-    
-    // Call the function to handle the fetch request
-    await handleFormSubmission('/add-product-input-event', data, 'form-add-product');
-    
-    fetchProducts();
-});
-
-
-document.getElementById('button-delete').addEventListener('click', async function(event) {
-    event.preventDefault();
-    const product_id = document.getElementById('input-delete').value;
-    var data = { product_id: product_id };
-    await handleFormSubmission('/delete-input-event', data, 'form-delete-product');
-    fetchProducts();
-});
-
-
-document.getElementById('button-update').addEventListener('click', async function(event) {
-    event.preventDefault();
-
-    const checkbox = document.getElementById('input-update-checkbox');
-    if (!checkbox.checked) {
-        alert('Please confirm overwrite');
-        return;
-    }
-
-    // FETCH FORM INPUTS
-    const product_id   = document.getElementById('input-update').value;
-    const product_name = document.getElementById('input-product-name').value;
-    const category     = document.getElementById('input-category').value;
-    const price        = document.getElementById('input-price').value;
-    const quantity     = document.getElementById('input-quantity').value;
-
-    // Prepare data object
-    const data = {
-        product_id: product_id,
-        product_name: product_name,
-        category: category,
-        price: price,
-        quantity: quantity
-    };
-
-    await handleFormSubmission('/update-input-event', data, 'form-update-product');
-    // Clear form
-    document.getElementById('form-add-product').reset();
-
-    fetchProducts();
-
-});
-
-// function switchToAdminLogin() {
-//     document.querySelector("h1").innerText = "Admin Login";
-//     document.querySelector(".switch-link").innerText = "Switch to User Login";
-//     document.querySelector(".switch-link").onclick = switchToUserLogin;
-//     document.getElementById("user_type").value = "admin"; // Set user type to admin
-// }
-
-// function switchToUserLogin() {
-//     document.querySelector("h1").innerText = "User   Login";
-//     document.querySelector(".switch-link").innerText = "Switch to Admin Login";
-//     document.querySelector(".switch-link").onclick = switchToAdminLogin;
-//     document.getElementById("user_type").value = "user"; // Set user type to user
-// }
-
-document.getElementById('button-history').addEventListener('click', function load_log() {
-    console.log("HELLO WORLD");
-    fetch('static\\turtles_cup.log')
+    document.getElementById('button-history').addEventListener('click', function load_log() {
+        console.log("HELLO WORLD");
+        fetch('static\\turtles_cup.log')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -193,14 +167,12 @@ document.getElementById('button-history').addEventListener('click', function loa
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
         });
-});
+    });
 
-function toggle_hidden() {
-    const section = document.getElementById('user-dashboard');
-    section.classList.toggle('hidden'); // Toggles the 'hidden' class
-}
-
-document.getElementById("button-log-out").addEventListener('click', function(event) {
-    event.preventDefault();
+    document.getElementById("button-log-out").addEventListener('click', function(event) {
+        event.preventDefault();
+        handleFormSubmission('/logout', {'message':'log-out'}, 'form-add-product')
+        // window.location.assign('../');
+    });
 
 });

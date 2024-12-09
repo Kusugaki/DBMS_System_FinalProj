@@ -20,7 +20,7 @@
 
     <div class="container">
         <div class="left-panel">
-            <section id="add-product" class="hidden">
+            <section id="add-product">
                 <form id="form-add-product">
                     <div id="add">
                         <div class="form-group">
@@ -57,7 +57,7 @@
                         <p id="update-descriptor">Leave blank to solely add a product</p>
                         <div class="form-group">
                             <label for="input-update">Product ID:</label>
-                            <input type="text" id="input-update" placeholder="Enter the ID" required>
+                            <input type="text" id="input-update" placeholder="Enter the ID">
                         </div>
                         <div class="form-group">
                             <input type="submit" id="button-update" value="Modify">
@@ -67,7 +67,7 @@
                     <div class="delete">
                         <div class="form-group">
                             <label for="input-delete">Enter the Product ID you want to Delete:</label>
-                            <input type="text" id="input-delete" placeholder="Enter the Product ID" required>
+                            <input type="text" id="input-delete" placeholder="Enter the Product ID">
                         </div>
                         <div class="form-group">
                             <input type="submit" id="button-delete" value="Confirm">
@@ -76,13 +76,15 @@
                 </form>
             </section>
 
-            <section id="user-dash" class="hidden">
-                <form><button type="button" id="button-log-out">Log-out</button></form>    
+            <section id="user-dash">
+                <form action="{{ url_for('logout') }}" method="POST" style="display: inline;">
+                    <button type="submit">Logout</button>
+                </form>
             </section>
         </div>
 
         <div class="right-panel">
-            <section id="display-table" class="hidden">
+            <section id="display-table">
                 <table id="dynamic-table">
                     <thead>
                         <tr>
