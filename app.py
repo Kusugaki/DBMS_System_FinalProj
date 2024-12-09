@@ -55,7 +55,7 @@ def create_database_and_tables():
                 account_id INT AUTO_INCREMENT PRIMARY KEY,
                 username VARCHAR(20) NOT NULL,
                 password VARCHAR(50) NOT NULL,
-                role VARCHAR(10) NOT NULL,
+                role VARCHAR(15) NOT NULL
             );
         """)
         connection.commit()

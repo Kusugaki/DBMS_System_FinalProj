@@ -18,122 +18,27 @@
         </div>
     </header>
 
-    <div class="container">
-        <div class="left-panel">
-            <section class="landing-page">
-                <div class="get-started">
-                    <button id="popover-show" popovertarget="login-popover">Get Started</button>                
-                </div>
-                <div id="login-popover" popover>
-                    <form id="form-log-in">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" placeholder="Enter your Username" required>
-
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" placeholder="Enter your Password" required>
-
-                        <input type="submit" id="button-log-in" value="Log-in">
-                        <button type="reset">Clear</button>
-                    </form>
-                </div>
-            </section>
-
-            <section id="user-dash" class="hidden">
-                <form>
-                    <button type="button" id="button-add-product">Add Product</button>
-                    <br>
-                    <button type="button" id="button-update-product">Update Product</button>
-                    <br>
-                    <button type="button" id="button-delete-product">Delete Product</button>
-                    <br>
-                    <button type="button" id="button-history">See History</button>
-                    <br>
-                    <br>
-                    <button type="button" id="button-log-out">Log-out</button>
-                </form>    
-            </section>
-
-            <section class="add-product">
-                <form id="form-add-product">
-                    <div id="add">
-                        <div class="form-group">
-                            <label for="input-product-name">Product Name:</label>
-                            <input type="text" id="input-product-name" placeholder="Enter the Product Name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="input-category">Category:</label>
-                            <select id="input-category" placeholder="Select Category">
-                                <option value="" disabled selected>Select Category</option>
-                                <option>Hot</option>
-                                <option>Warm</option>
-                                <option>Mainit</option>
-                                <option>Iced</option>
-                                <option>Cold</option>
-                                <option>Malamig</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="input-price">Price:</label>
-                            <input type="text" step="0.01" id="input-price" placeholder="Enter the Price" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="input-quantity">Quantity:</label>
-                            <input type="number" step="1" id="input-quantity" placeholder="Enter the Quantity" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" id="button-add" value="Add Product">
-                            <button type="reset" id="button-clear">Clear</button>
-                        </div>
-                    </div>
-            
-                    <div id="update">
-                        <p id="update-descriptor">Leave blank to solely add a product</p>
-                        <div class="form-group">
-                            <label for="input-update">Product ID:</label>
-                            <input type="text" id="input-update" placeholder="Enter the ID" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" id="button-update" value="Modify">
-                        </div>
-                    </div>
-            
-                    <div class="delete">
-                        <div class="form-group">
-                            <label for="input-delete">Enter the Product ID you want to Delete:</label>
-                            <input type="text" id="input-delete" placeholder="Enter the Product ID" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" id="button-delete" value="Confirm">
-                        </div>
-                    </div>
-                </form>
-            </section>
-
-            <section class="history-log">
-                <div id="log-content"></div>
-            </section>
+    <section class="landing-page">
+        <div class="get-started">
+            <button id="popover-show" popovertarget="login-popover">Get Started</button>                
         </div>
+        <div id="login-popover" popover>
+            <form id="form-log-in">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your Username" required>
 
-        <div class="right-panel">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your Password" required>
 
-            <section class="display-table">
-                <table id="dynamic-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Product Name</th>
-                            <th>Category</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dynamic-table-tbody">
-                        <!-- <td>dynamic table here</td> -->
-                    </tbody>
-                </table>
-            </section>
+                <input type="submit" id="button-log-in" value="Log-in">
+                <button type="reset">Clear</button>
+            </form>
         </div>
-    </div>
+    </section>
+
+    <section id="user-dash" class="hidden">
+        <form><button type="button" id="button-log-out">Log-out</button></form>    
+    </section>
 
     <footer>
         <div class="footer">

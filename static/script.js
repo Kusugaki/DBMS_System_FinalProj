@@ -67,16 +67,32 @@ document.getElementById('button-log-in').addEventListener('click', async functio
     const reply = await handleFormSubmission('/log-in-input-event', data, 'form-log-in');
 
     if (reply.role === "admin") {
-        
-    }
-    // FETCH dashboard section to handle visibility 
-    const section = document.getElementById("user-dash");
-
-    // toggle show dashboard
-    if (section.classList.contains("hidden")) {
-        section.classList.remove("hidden");
+        window.location.assign('..\\templates\\admin.html')
     } else {
-        section.classList.add("hidden");
+        
+        // FETCH dashboard section to handle visibility 
+        const section_dash = document.getElementById("user-dash");
+        const section_add = document.getElementById("add-product");
+        const section_table = document.getElementById("display-table");
+
+        // toggle show dashboard
+        if (section_dash.classList.contains("hidden")) {
+            section_dash.classList.remove("hidden");
+        } else {
+            section_dash.classList.add("hidden");
+        }
+        // toggle show add-product
+        if (section_add.classList.contains("hidden")) {
+            section_add.classList.remove("hidden");
+        } else {
+            section_add.classList.add("hidden");
+        }
+        // toggle show display-table
+        if (section_table.classList.contains("hidden")) {
+            section_table.classList.remove("hidden");
+        } else {
+            section_table.classList.add("hidden");
+        }
     }
 
 });

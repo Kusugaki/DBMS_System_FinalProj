@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DBMS Final Project</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-title">
+            <h1>Turtle's Cup Cafe</h1>
+        </div>
+        <br>
+        <div class="subheader-title">
+            <h3>Turtle & Hare</h3>
+        </div>
+        <div class="subheader-description">
+            <h5>Inventory Management System</h5>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="left-panel">
+            <section class="add-product">
+                <form id="form-add-product">
+                    <div id="add">
+                        <div class="form-group">
+                            <label for="input-product-name">Product Name:</label>
+                            <input type="text" id="input-product-name" placeholder="Enter the Product Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-category">Category:</label>
+                            <select id="input-category" placeholder="Select Category">
+                                <option value="" disabled selected>Select Category</option>
+                                <option>Pastry</option>
+                                <option>Coffee</option>
+                                <option>Tea</option>
+                                <option>Milk Tea</option>
+                                <option>Fruit Tea</option>
+                                <option>Juice</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-price">Price:</label>
+                            <input type="text" step="0.01" id="input-price" placeholder="Enter the Price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-quantity">Quantity:</label>
+                            <input type="number" step="1" id="input-quantity" placeholder="Enter the Quantity" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" id="button-add" value="Add Product">
+                            <button type="reset" id="button-clear">Clear</button>
+                        </div>
+                    </div>
+            
+                    <div id="update">
+                        <p id="update-descriptor">Leave blank to solely add a product</p>
+                        <div class="form-group">
+                            <label for="input-update">Product ID:</label>
+                            <input type="text" id="input-update" placeholder="Enter the ID" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" id="button-update" value="Modify">
+                        </div>
+                    </div>
+            
+                    <div class="delete">
+                        <div class="form-group">
+                            <label for="input-delete">Enter the Product ID you want to Delete:</label>
+                            <input type="text" id="input-delete" placeholder="Enter the Product ID" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" id="button-delete" value="Confirm">
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <section class="history-log">
+                <div id="log-content"></div>
+            </section>
+            
+            <section id="user-dash" class="hidden">
+                <form>
+                    <button type="button" id="button-history">See History</button>
+                    <br>
+                    <br>
+                    <button type="button" id="button-log-out">Log-out</button>
+                </form>    
+            </section>
+        </div>
+
+        <div class="right-panel">
+
+            <section class="display-table">
+                <table id="dynamic-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dynamic-table-tbody">
+                        <!-- <td>dynamic table here</td> -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <p>&copy; 2024 Turtle's Cup Cafe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../static/script.js" defer></script>
+</body>
+</html>
