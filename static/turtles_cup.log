@@ -85,3 +85,162 @@
 2024-12-09 05:01:03,658 - __main__ - WARNING	- No product found with the given ID.
 2024-12-09 05:01:03,661 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:01:03] "[33mPOST /delete-input-event HTTP/1.1[0m" 404 -
 2024-12-09 05:01:09,231 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 05:01:09] "GET /static/turtles_cup.log HTTP/1.1" 200 -
+2024-12-09 10:45:36,878 - __main__ - INFO	- Starting Flask application.
+2024-12-09 10:45:36,933 - werkzeug - INFO	- [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-09 10:45:36,933 - werkzeug - INFO	- [33mPress CTRL+C to quit[0m
+2024-12-09 10:45:36,936 - werkzeug - INFO	-  * Restarting with stat
+2024-12-09 10:45:37,714 - __main__ - INFO	- Starting Flask application.
+2024-12-09 10:45:37,756 - werkzeug - WARNING	-  * Debugger is active!
+2024-12-09 10:45:37,765 - werkzeug - INFO	-  * Debugger PIN: 115-084-137
+2024-12-09 10:45:48,403 - __main__ - INFO	- Home page accessed.
+2024-12-09 10:45:48,408 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:45:48] "GET / HTTP/1.1" 200 -
+2024-12-09 10:45:48,582 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:45:48] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 10:45:48,606 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:45:48] "GET /static/script.js HTTP/1.1" 200 -
+2024-12-09 10:45:48,643 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:45:48] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 10:46:03,346 - __main__ - INFO	- Log-in attempt: username = 'john doe'
+2024-12-09 10:46:03,356 - __main__ - INFO	- Log-in Successful.
+2024-12-09 10:46:03,357 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:46:03] "POST /log-in-input-event HTTP/1.1" 200 -
+2024-12-09 10:46:06,361 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:46:06] "[35m[1mGET /get-log HTTP/1.1[0m" 500 -
+2024-12-09 10:46:10,627 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:46:10] "[35m[1mGET /get-log HTTP/1.1[0m" 500 -
+2024-12-09 10:47:35,986 - werkzeug - INFO	-  * Detected change in 'c:\\Users\\JP\\Desktop\\KUSOGAKI\\gaki_VisualStudio\\DBMS_System_FinalProj\\app.py', reloading
+2024-12-09 10:47:36,067 - werkzeug - INFO	-  * Restarting with stat
+2024-12-09 10:47:37,103 - __main__ - INFO	- Starting Flask application.
+2024-12-09 10:47:37,139 - werkzeug - WARNING	-  * Debugger is active!
+2024-12-09 10:47:37,148 - werkzeug - INFO	-  * Debugger PIN: 115-084-137
+2024-12-09 10:47:42,189 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:47:42] "[35m[1mGET /get-log HTTP/1.1[0m" 500 -
+2024-12-09 10:47:49,696 - __main__ - INFO	- Home page accessed.
+2024-12-09 10:47:49,733 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:47:49] "GET / HTTP/1.1" 200 -
+2024-12-09 10:47:49,881 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:47:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-09 10:47:49,891 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:47:49] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 10:47:49,941 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:47:49] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 10:47:55,367 - __main__ - INFO	- Log-in attempt: username = 'john doe'
+2024-12-09 10:47:55,378 - __main__ - INFO	- Log-in Successful.
+2024-12-09 10:47:55,379 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:47:55] "POST /log-in-input-event HTTP/1.1" 200 -
+2024-12-09 10:47:56,609 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:47:56] "[35m[1mGET /get-log HTTP/1.1[0m" 500 -
+2024-12-09 10:48:37,405 - __main__ - INFO	- Home page accessed.
+2024-12-09 10:48:37,406 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:48:37] "GET / HTTP/1.1" 200 -
+2024-12-09 10:48:37,470 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:48:37] "[33mGET /static/style.css HTTP/1.1[0m" 404 -
+2024-12-09 10:48:37,474 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:48:37] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 10:48:37,550 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:48:37] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 10:48:40,928 - werkzeug - INFO	-  * Detected change in 'c:\\Users\\JP\\Desktop\\KUSOGAKI\\gaki_VisualStudio\\DBMS_System_FinalProj\\app.py', reloading
+2024-12-09 10:48:41,024 - werkzeug - INFO	-  * Restarting with stat
+2024-12-09 10:48:41,927 - __main__ - INFO	- Starting Flask application.
+2024-12-09 10:48:41,960 - werkzeug - WARNING	-  * Debugger is active!
+2024-12-09 10:48:41,968 - werkzeug - INFO	-  * Debugger PIN: 115-084-137
+2024-12-09 10:48:56,240 - __main__ - INFO	- Home page accessed.
+2024-12-09 10:48:56,244 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:48:56] "GET / HTTP/1.1" 200 -
+2024-12-09 10:48:56,381 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:48:56] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 10:48:56,381 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:48:56] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 10:48:56,432 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:48:56] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 10:49:03,203 - werkzeug - INFO	-  * Detected change in 'c:\\Users\\JP\\Desktop\\KUSOGAKI\\gaki_VisualStudio\\DBMS_System_FinalProj\\app.py', reloading
+2024-12-09 10:49:03,303 - werkzeug - INFO	-  * Restarting with stat
+2024-12-09 10:49:04,294 - __main__ - INFO	- Starting Flask application.
+2024-12-09 10:49:04,336 - werkzeug - WARNING	-  * Debugger is active!
+2024-12-09 10:49:04,346 - werkzeug - INFO	-  * Debugger PIN: 115-084-137
+2024-12-09 10:49:41,739 - werkzeug - INFO	-  * Detected change in 'c:\\Users\\JP\\Desktop\\KUSOGAKI\\gaki_VisualStudio\\DBMS_System_FinalProj\\app.py', reloading
+2024-12-09 10:49:41,819 - werkzeug - INFO	-  * Restarting with stat
+2024-12-09 10:49:42,726 - __main__ - INFO	- Starting Flask application.
+2024-12-09 10:49:42,768 - werkzeug - WARNING	-  * Debugger is active!
+2024-12-09 10:49:42,774 - werkzeug - INFO	-  * Debugger PIN: 115-084-137
+2024-12-09 10:49:52,928 - __main__ - INFO	- Log-in attempt: username = 'donatello'
+2024-12-09 10:49:52,944 - __main__ - INFO	- Log-in Successful.
+2024-12-09 10:49:52,947 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:49:52] "POST /log-in-input-event HTTP/1.1" 200 -
+2024-12-09 10:49:54,051 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:49:54] "[35m[1mGET /get-log HTTP/1.1[0m" 500 -
+2024-12-09 10:50:06,037 - werkzeug - INFO	-  * Detected change in 'c:\\Users\\JP\\Desktop\\KUSOGAKI\\gaki_VisualStudio\\DBMS_System_FinalProj\\app.py', reloading
+2024-12-09 10:50:06,120 - werkzeug - INFO	-  * Restarting with stat
+2024-12-09 10:50:53,355 - __main__ - INFO	- Starting Flask application.
+2024-12-09 10:50:53,408 - werkzeug - INFO	- [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-09 10:50:53,410 - werkzeug - INFO	- [33mPress CTRL+C to quit[0m
+2024-12-09 10:50:53,414 - werkzeug - INFO	-  * Restarting with stat
+2024-12-09 10:50:54,280 - __main__ - INFO	- Starting Flask application.
+2024-12-09 10:50:54,322 - werkzeug - WARNING	-  * Debugger is active!
+2024-12-09 10:50:54,333 - werkzeug - INFO	-  * Debugger PIN: 115-084-137
+2024-12-09 10:50:57,462 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:50:57] "GET /get-log HTTP/1.1" 200 -
+2024-12-09 10:51:10,556 - __main__ - INFO	- User logged out successfully.
+2024-12-09 10:51:10,558 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:51:10] "POST /logout HTTP/1.1" 200 -
+2024-12-09 10:51:11,577 - __main__ - INFO	- Home page accessed.
+2024-12-09 10:51:11,582 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:51:11] "GET / HTTP/1.1" 200 -
+2024-12-09 10:51:11,720 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:51:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-12-09 10:51:11,729 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:51:11] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 10:51:11,768 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:51:11] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 10:57:04,406 - __main__ - INFO	- Starting Flask application.
+2024-12-09 10:57:04,455 - werkzeug - INFO	- [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-09 10:57:04,455 - werkzeug - INFO	- [33mPress CTRL+C to quit[0m
+2024-12-09 10:57:04,458 - werkzeug - INFO	-  * Restarting with stat
+2024-12-09 10:57:05,286 - __main__ - INFO	- Starting Flask application.
+2024-12-09 10:57:05,319 - werkzeug - WARNING	-  * Debugger is active!
+2024-12-09 10:57:05,325 - werkzeug - INFO	-  * Debugger PIN: 115-084-137
+2024-12-09 10:57:06,182 - __main__ - INFO	- Home page accessed.
+2024-12-09 10:57:06,189 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:57:06] "GET / HTTP/1.1" 200 -
+2024-12-09 10:57:06,344 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:57:06] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 10:57:06,359 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:57:06] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 10:57:06,396 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 10:57:06] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 11:03:38,882 - __main__ - INFO	- Log-in attempt: username = 'donatello'
+2024-12-09 11:03:38,892 - __main__ - INFO	- Log-in Successful.
+2024-12-09 11:03:38,892 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:03:38] "POST /log-in-input-event HTTP/1.1" 200 -
+2024-12-09 11:03:42,120 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:03:42] "GET /get-log HTTP/1.1" 200 -
+2024-12-09 11:07:48,464 - __main__ - INFO	- Starting Flask application.
+2024-12-09 11:07:48,513 - werkzeug - INFO	- [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-12-09 11:07:48,515 - werkzeug - INFO	- [33mPress CTRL+C to quit[0m
+2024-12-09 11:07:48,517 - werkzeug - INFO	-  * Restarting with stat
+2024-12-09 11:07:49,320 - __main__ - INFO	- Starting Flask application.
+2024-12-09 11:07:49,356 - werkzeug - WARNING	-  * Debugger is active!
+2024-12-09 11:07:49,364 - werkzeug - INFO	-  * Debugger PIN: 115-084-137
+2024-12-09 11:07:53,042 - __main__ - INFO	- Home page accessed.
+2024-12-09 11:07:53,048 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:07:53] "GET / HTTP/1.1" 200 -
+2024-12-09 11:07:53,226 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:07:53] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 11:07:53,246 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:07:53] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 11:07:53,295 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:07:53] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 11:08:20,298 - __main__ - INFO	- Log-in attempt: username = 'donatello'
+2024-12-09 11:08:20,311 - __main__ - INFO	- Log-in Successful.
+2024-12-09 11:08:20,312 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:08:20] "POST /log-in-input-event HTTP/1.1" 200 -
+2024-12-09 11:11:48,427 - __main__ - INFO	- Home page accessed.
+2024-12-09 11:11:48,427 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:11:48] "GET / HTTP/1.1" 200 -
+2024-12-09 11:11:48,484 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:11:48] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 11:11:48,497 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:11:48] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 11:11:48,539 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:11:48] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 11:12:07,474 - __main__ - INFO	- Log-in attempt: username = 'donatello'
+2024-12-09 11:12:07,485 - __main__ - INFO	- Log-in Successful.
+2024-12-09 11:12:07,485 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:12:07] "POST /log-in-input-event HTTP/1.1" 200 -
+2024-12-09 11:12:08,899 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:12:08] "GET /get-log HTTP/1.1" 200 -
+2024-12-09 11:12:33,439 - __main__ - INFO	- Home page accessed.
+2024-12-09 11:12:33,441 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:12:33] "GET / HTTP/1.1" 200 -
+2024-12-09 11:12:33,503 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:12:33] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 11:12:33,504 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:12:33] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 11:12:33,559 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:12:33] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 11:12:42,747 - __main__ - INFO	- Home page accessed.
+2024-12-09 11:12:42,749 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:12:42] "GET / HTTP/1.1" 200 -
+2024-12-09 11:12:42,803 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:12:42] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 11:12:42,804 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:12:42] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 11:12:42,837 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:12:42] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 11:13:41,938 - __main__ - INFO	- Home page accessed.
+2024-12-09 11:13:41,940 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:13:41] "GET / HTTP/1.1" 200 -
+2024-12-09 11:13:41,981 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:13:41] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 11:13:42,002 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:13:42] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 11:13:42,034 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:13:42] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 11:13:49,976 - __main__ - INFO	- Home page accessed.
+2024-12-09 11:13:49,977 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:13:49] "GET / HTTP/1.1" 200 -
+2024-12-09 11:13:50,067 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:13:50] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 11:13:50,080 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:13:50] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 11:13:50,127 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:13:50] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 11:14:35,457 - __main__ - INFO	- Home page accessed.
+2024-12-09 11:14:35,458 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:14:35] "GET / HTTP/1.1" 200 -
+2024-12-09 11:14:35,537 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:14:35] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 11:14:35,551 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:14:35] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 11:14:35,581 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:14:35] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 11:14:50,837 - __main__ - INFO	- Home page accessed.
+2024-12-09 11:14:50,838 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:14:50] "GET / HTTP/1.1" 200 -
+2024-12-09 11:14:50,897 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:14:50] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 11:14:50,915 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:14:50] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 11:14:50,952 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:14:50] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 11:15:29,607 - __main__ - INFO	- Home page accessed.
+2024-12-09 11:15:29,608 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:15:29] "GET / HTTP/1.1" 200 -
+2024-12-09 11:15:29,691 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:15:29] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-12-09 11:15:29,691 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:15:29] "GET /static/style.css HTTP/1.1" 200 -
+2024-12-09 11:15:29,733 - werkzeug - INFO	- 127.0.0.1 - - [09/Dec/2024 11:15:29] "GET /get-products HTTP/1.1" 200 -
+2024-12-09 11:18:16,382 - werkzeug - INFO	-  * Detected change in 'c:\\Users\\JP\\Desktop\\KUSOGAKI\\gaki_VisualStudio\\DBMS_System_FinalProj\\app.py', reloading
+2024-12-09 11:18:16,474 - werkzeug - INFO	-  * Restarting with stat

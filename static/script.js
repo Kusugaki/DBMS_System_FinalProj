@@ -152,6 +152,27 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('dynamic-table-body').addEventListener('DOMContentLoaded', fetchProducts());
     });
 
+    document.getElementById('button-history').addEventListener('click', async function() {
+        try {
+            const response = await fetch('/get-log');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            
+            // Display the log content in the log-content div
+            const logContentDiv = document.getElementById('log-content');
+            if (data.log) {
+                logContentDiv.innerText = data.log; // Display log content
+            } else {
+                logContentDiv.innerText = 'No log content available.';
+            }
+        } catch (error) {
+            console.error('Error fetching log:', error);
+            document.getElementById('log-content').innerText = 'Error fetching log: ' + error.message;
+        }
+    });
+
     document.getElementById("button-log-out").addEventListener('click', async function(event) {
         event.preventDefault();
         const response = await fetch('/logout', { method: 'POST' });

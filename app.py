@@ -169,6 +169,18 @@ def logout():
     return jsonify({'message': 'Logged out successfully'})
 
 
+@app.route('/get-log', methods=['GET'])
+def get_log():
+    try:
+        log_path = 'C:\\Users\\JP\\Desktop\\KUSOGAKI\\gaki_VisualStudio\\DBMS_System_FinalProj\\static\\turtles_cup.log' 
+        with open(log_path, 'r') as file:
+            log_content = file.read()
+            print(log_content)
+        return jsonify({'log': log_content})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
 @app.route('/get-products', methods=['GET'])
 def get_products():
     connection = connect_to_sql()
