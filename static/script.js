@@ -97,9 +97,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const data = {
             product_name: product_name,
-            category: category,
-            price: price,
-            quantity: quantity
+            category:     category,
+            price:        price,
+            quantity:     quantity
         };
 
         await handleFormSubmission('/add-product-input-event', data, 'form-add-product');

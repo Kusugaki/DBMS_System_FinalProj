@@ -1,15 +1,26 @@
 '''
+
+IMPORTANT INFO INSIDE database_credentials.py aliased as dbc FOR IMPORT USE
+    dbc.USERNAME
+    dbc.PASSWORD
+    dbc.DATABASE_NAME
+    dbc.INVENTORY_TABLE_NAME
+    dbc.ACCOUNTS_TABLE_NAME
+
 MODULES / PYTHON IMPORTS
         flask module = Javascript Connection
         mysql.connector = Python MySQL Connector
         logging module  = Logger
 
-        database_credentials = aliased as "dbc" has dbc.USERNAME, dbc.PASSWORD, dbc.DATABASE_NAME, dbc.INVENTORY_TABLE_NAME
+        database_credentials = aliased as "dbc"
         os module = creates directory if doesn't exist
 
 logging.basicConfig() -> pang-Log
 
 app = Flask(__name__) -> IMPORTANT, main application server
+
+return render_template('URL')           -> renders the HTML data to the application
+request.jsonify()                       -> turns requested data into a dictionary, Type-casts data into a JSON (js dictionary)
 
 connector.connect()                     -> Establish MySQL Connection using Python with parameters of host:'localhost', user:'username', passwd:'password'
 with connection.cursor() as cursor:     -> same as "cursor = connection.cursor()"     cursor ng MySQL database
@@ -26,7 +37,8 @@ except Exception as e:                  -> Exception = error_condition, e = erro
 
 as  -> ALIAS or Variable name declaration
 
-logger.info()                           -> Logs string parameter into Log file
+logger = logging.getLogger(__name__)    -> initializes and starts the logger
+logger.info("message")                  -> Logs string parameter into Log file
 
 connect_to_sql()                        -> Connect to MySQL function
 
@@ -70,7 +82,7 @@ if __name__ == '__main__':              -> kahit wag na
 app.run(debug=True)                     -> start the application server
 
 SQL QUERIES
-    SQL info
+    SQL info:
         database name: turtles_cup
         table names:    inventory
                         accounts
@@ -142,7 +154,7 @@ SELECT field_names, ... FROM table_name;
     sql_query = f"""
     DELETE FROM {dbc.INVENTORY_TABLE_NAME} 
     WHERE id = {product_id};
-"""
+    """
 
 
 
