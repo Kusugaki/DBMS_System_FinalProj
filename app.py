@@ -1,3 +1,154 @@
+'''
+MODULES / PYTHON IMPORTS
+        flask module = Javascript Connection
+        mysql.connector = Python MySQL Connector
+        logging module  = Logger
+
+        database_credentials = aliased as "dbc" has dbc.USERNAME, dbc.PASSWORD, dbc.DATABASE_NAME, dbc.INVENTORY_TABLE_NAME
+        os module = creates directory if doesn't exist
+
+logging.basicConfig() -> pang-Log
+
+app = Flask(__name__) -> IMPORTANT, main application server
+
+connector.connect()                     -> Establish MySQL Connection using Python with parameters of host:'localhost', user:'username', passwd:'password'
+with connection.cursor() as cursor:     -> same as "cursor = connection.cursor()"     cursor ng MySQL database
+cursor.execute()                        -> Executes SQL Queries
+cursor.fetchall()                       -> Fetches SELECT data from query execution
+cursor.fetchone()                       -> Fetches ONE SELECT data from query execution
+connection.commit()                     -> Saves SQL Query Execution
+connection.close()                      -> Closes the Python & MySQL Connection
+
+try:                                    -> tries block of code
+except (error_condition):               -> runs if try-block has an Error
+
+except Exception as e:                  -> Exception = error_condition, e = error_varaible_name_to_use_in_the_program
+
+as  -> ALIAS or Variable name declaration
+
+logger.info()                           -> Logs string parameter into Log file
+
+connect_to_sql()                        -> Connect to MySQL function
+
+request.get_json()                      -> Flash built-in function to get js-html Input data
+
+
+if not 'variable':                      -> verifies if variable has data, or is equal to None / Null
+
+
+# SAVES ACCOUNT LOG-IN TO CURRENT SESSION
+session['username'] = sql_username
+session['role']     = sql_role
+
+
+session.clear()                         -> Deletes account data from current session
+
+dictionary parts: key (separated by colon) value
+dictionary = Key:Value                  -> Key-value Pairs
+variable = {'username':'donatello'}
+
+to access a value:
+    variable['username']
+        or
+    variable.get('username')
+
+.get(), or
+dictionary.get("key_name")              -> get's data from dictionary, same as dictionary["key_name"]
+
+return jsonify( { key:value } )         -> returns a dictionary to send to the js file
+
+products = []                           -> Initializes a LIST
+products.append()                       -> Appends/Adds a new element to the end of the list
+
+results = cursor.fetchall()
+for row in results:
+    row[0], row[1], row[2], ...         -> ordering of Data based on SQL query field name ordering
+
+@app.route('URL', methods=['POST']) or ['GET']  -> Flask module js connector
+
+if __name__ == '__main__':              -> kahit wag na
+app.run(debug=True)                     -> start the application server
+
+SQL QUERIES
+    SQL info
+        database name: turtles_cup
+        table names:    inventory
+                        accounts
+        field names:
+            inventory:
+                id              INT AUTO_INCREMENT  PK
+                product_name    VARCHAR(50)
+                category        VARCHAR(50)
+                price           DECIMAL(15,4)
+                quantity        INT
+            accounts
+                account_id  INT AUTO_INCREMENT  PK
+                username    VARCHAR(20)
+                password    VARCHAR(50)
+                role        VARCHAR(10)
+
+INSERT INTO table_name (field_names, ...) VALUES (values, ...);
+
+UPDATE table_name
+SET field_name = "new_value"
+WHERE field_name = "value";
+
+DELETE FROM table_name
+WHERE condition;
+
+SELECT * FROM table_name;
+
+SELECT field_names, ... FROM table_name;
+
+
+
+####### CODES
+
+    sql_query = f"""
+    SELECT username, password, role
+    FROM {dbc.ACCOUNTS_TABLE_NAME}
+    WHERE username = '{username}' AND password = '{password}';
+    """
+
+    sql_query = f"""
+    SELECT id, product_name, category, price, quantity 
+    FROM {dbc.INVENTORY_TABLE_NAME};
+    """
+
+    sql_query = f"""
+    INSERT INTO {dbc.INVENTORY_TABLE_NAME} (product_name, category, price, quantity) 
+    VALUES ('{product_name}', '{category}', {price}, {quantity});
+    """
+
+    sql_query = f"""
+    UPDATE {dbc.INVENTORY_TABLE_NAME}
+    SET product_name = '{product_name}', 
+        category = '{category}', 
+        price = {price}, 
+        quantity = {quantity}
+    WHERE id = {product_id};
+    """
+
+    sql_query_check = f"""
+    SELECT username FROM {dbc.ACCOUNTS_TABLE_NAME}
+    WHERE username = '{username}';
+    """
+
+    sql_query_insert = f"""
+    INSERT INTO {dbc.ACCOUNTS_TABLE_NAME} (username, password, role)
+    VALUES ('{username}', '{password}', '{role}');
+    """
+
+    sql_query = f"""
+    DELETE FROM {dbc.INVENTORY_TABLE_NAME} 
+    WHERE id = {product_id};
+"""
+
+
+
+'''
+
+
 from flask import Flask, render_template, request, jsonify, session
 from mysql import connector
 import logging
@@ -37,6 +188,7 @@ def create_database_and_tables():
         user=dbc.USERNAME,
         passwd=dbc.PASSWORD
     )
+
     with connection.cursor() as cursor:
         cursor.execute(f"CREATE DATABASE IF NOT EXISTS {dbc.DATABASE_NAME};")
         cursor.execute(f"USE {dbc.DATABASE_NAME};")
@@ -59,6 +211,8 @@ def create_database_and_tables():
                 role VARCHAR(10) NOT NULL
             );
         """)
+
+        # Save to the database
         connection.commit()
     connection.close()
 
@@ -83,6 +237,8 @@ def fetch_inventory_sql_data():
     """Fetch all data from the inventory table."""
     logger.info("Fetching inventory data.")
     connection = connect_to_sql()
+
+    # Connectivity Validation
     if connection is None:
         logger.error("Database connection failed.")
         return jsonify({'message': 'Database connection failed'}), 500
@@ -111,6 +267,8 @@ def log_in():
     username = request.get_json().get('username')
     password = request.get_json().get('password')
 
+    print(username, password)
+
     # Username validation
     if not username or len(username) < 3:
         logger.warning("Username validation failed.")
@@ -119,18 +277,18 @@ def log_in():
     sql_query = f"""
     SELECT username, password, role
     FROM {dbc.ACCOUNTS_TABLE_NAME}
-    WHERE username = %s AND password = %s;
+    WHERE username = '{username}' AND password = '{password}';
     """
 
     logger.info(f"Log-in attempt: {username = }")
     connection = connect_to_sql()
-    if connection is None:
+    if not connection:
         logger.error("Database connection failed.")
         return jsonify({'message': 'Database connection failed'}), 500
 
     try:
         with connection.cursor() as cursor:
-            cursor.execute(sql_query, (username, password))
+            cursor.execute(sql_query)
             account_data = cursor.fetchall()
 
             if not account_data:
@@ -193,11 +351,19 @@ def get_products():
     FROM {dbc.INVENTORY_TABLE_NAME};
     """
     try:
+        products = []
+
         with connection.cursor() as cursor:
             cursor.execute(sql_query)
             results = cursor.fetchall()
-            products = [{'id': row[0], 'product_name': row[1], 'category': row[2], 'price': row[3], 'quantity': row[4]} for row in results]
+            for row in results:
+                products.append({'id':           row[0],
+                                 'product_name': row[1],
+                                 'category':     row[2],
+                                 'price':        row[3],
+                                 'quantity':     row[4]})
             return jsonify(products)
+
     except connector.Error as err:
         logger.error(f"Error: {err}")
         return jsonify({'message': 'Database error'}), 500
@@ -217,17 +383,17 @@ def add_product_input_event():
 
     sql_query = f"""
     INSERT INTO {dbc.INVENTORY_TABLE_NAME} (product_name, category, price, quantity) 
-    VALUES (%s, %s, %s, %s);
+    VALUES ('{product_name}', '{category}', {price}, {quantity});
     """
 
     connection = connect_to_sql()
-    if connection is None:
+    if not connection:
         logger.error("Database connection failed.")
         return jsonify({'message': 'Database connection failed'}), 500
     
     try:
         with connection.cursor() as cursor:
-            cursor.execute(sql_query, (product_name, category, price, quantity))
+            cursor.execute(sql_query)
             connection.commit()
             logger.info(f"Product added: {product_name}, Category: {category}, Price: {price}, Quantity: {quantity}")
 
@@ -248,17 +414,17 @@ def delete_product():
 
     sql_query = f"""
     DELETE FROM {dbc.INVENTORY_TABLE_NAME} 
-    WHERE id = %s;
+    WHERE id = {product_id};
     """
 
     connection = connect_to_sql()
-    if connection is None:
+    if not connection:
         logger.error("Database connection failed.")
         return jsonify({'message': 'Database connection failed'}), 500
 
     try:
         with connection.cursor() as cursor:
-            cursor.execute(sql_query, (product_id,))
+            cursor.execute(sql_query)
 
             if cursor.rowcount == 0:
                 logger.warning("No product found with the given ID.")
@@ -286,21 +452,21 @@ def update_product():
 
     sql_query = f"""
     UPDATE {dbc.INVENTORY_TABLE_NAME}
-    SET product_name = %s, 
-        category = %s, 
-        price = %s, 
-        quantity = %s
-    WHERE id = %s;
+    SET product_name = '{product_name}', 
+        category = '{category}', 
+        price = {price}, 
+        quantity = {quantity}
+    WHERE id = {product_id};
     """
 
     connection = connect_to_sql()
-    if connection is None:
+    if not connection:
         logger.error("Database connection failed.")
         return jsonify({'message': 'Database connection failed'}), 500
 
     try:
         with connection.cursor() as cursor:
-            cursor.execute(sql_query, (product_name, category, price, quantity, product_id))
+            cursor.execute(sql_query)
             connection.commit()
 
             if cursor.rowcount == 0:
@@ -332,6 +498,7 @@ def create_account():
         logger.warning("Username validation failed.")
         return jsonify({'message': 'Invalid username. Must be at least 3 characters long.'}), 400
 
+    # Password validation
     if not password or len(password) < 6:
         logger.warning("Password validation failed.")
         return jsonify({'message': 'Invalid password. Must be at least 6 characters long.'}), 400
@@ -339,17 +506,17 @@ def create_account():
     # Check if the username already exists
     sql_query_check = f"""
     SELECT username FROM {dbc.ACCOUNTS_TABLE_NAME}
-    WHERE username = %s;
+    WHERE username = '{username}';
     """
 
     connection = connect_to_sql()
-    if connection is None:
+    if not connection:
         logger.error("Database connection failed.")
         return jsonify({'message': 'Database connection failed'}), 500
 
     try:
         with connection.cursor() as cursor:
-            cursor.execute(sql_query_check, (username,))
+            cursor.execute(sql_query_check)
             existing_user = cursor.fetchone()
 
             if existing_user:
@@ -359,9 +526,9 @@ def create_account():
             # Insert new user into the database
             sql_query_insert = f"""
             INSERT INTO {dbc.ACCOUNTS_TABLE_NAME} (username, password, role)
-            VALUES (%s, %s, %s);
+            VALUES ('{username}', '{password}', '{role}');
             """
-            cursor.execute(sql_query_insert, (username, password, role))
+            cursor.execute(sql_query_insert)
             connection.commit()
 
             logger.info("Account created successfully.")
