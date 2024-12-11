@@ -311,11 +311,17 @@ def log_in():
             sql_password = account_data[0][1]
             sql_role     = account_data[0][2]  # Fetch the role
 
+            print(f"{sql_role = } {sql_username = } { sql_password = }")
+
             if username == sql_username and password == sql_password:
-                logger.info("Log-in Successful. role =", sql_role)
+                logger.info("Log-in Successful. role ="+ str(sql_role))
                 session['username'] = sql_username
                 session['role']     = sql_role
+                
+                render_template('index.html')
+
                 return jsonify({'message': 'Log -in Successful', 'role': sql_role})
+            
             else:
                 logger.warning("Log-in Failed: Incorrect credentials.")
                 return jsonify({'message': 'Log-in Failed'}), 401
@@ -332,7 +338,7 @@ def is_logged_in():
         return jsonify({'logged_in': True, 'role': session['role']})
     return jsonify({'logged_in': False}), 401
 
-@app.route('/logout', methods=['POST'])
+@app.route('/logout', methods=['POST', 'GET'])
 def logout():
     session.clear()  # Clear the session
     logger.info("User logged out successfully.")

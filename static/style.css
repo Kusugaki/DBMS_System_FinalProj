@@ -9,8 +9,8 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background-color: #f0f0f0; /* Light background for the body */
-    color: #333; /* Default text color */
+    background-color: #f0f0f0;
+    color: #333;
 }
 
 /* Hidden Class */
@@ -21,10 +21,10 @@ body {
 /* Header Styles */
 header {
     text-align: center;
-    background-color: #4CAF50; /* Green background */
+    background-color: #4CAF50;
     color: white;
-    padding: 10px 0; /* Increased padding for better spacing */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
     h1 {
         font-size: 3rem;
@@ -43,20 +43,20 @@ header {
         opacity: 1;
         animation: show-section 750ms ease-out;
     }
-    background-color: white; /* White background for popover */
-    border: 1px solid #ccc; /* Light border */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-    padding: 20px; /* Padding inside the popover */
-    z-index: 1000; /* Ensure it appears above other elements */
-    display: none; /* Initially hidden */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    display: none;
     opacity: 0;
     transition: opacity 0.5s;
 }
 
 /* Show popover when active */
 #login-popover[popover] {
-    display: block; /* Show when activated */
+    display: block;
     position: absolute;
     top: 35%;
     left: calc(85vh);
@@ -69,40 +69,40 @@ header {
 /* Popover Form Styles */
 #form-log-in {
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
+    flex-direction: column;
 }
 
 /* Popover Input Styles */
 #form-log-in input[type="text"],
 #form-log-in input[type="password"] {
-    margin-bottom: 15px; /* Space between inputs */
+    margin-bottom: 15px;
 }
 
 /* Popover Button Styles */
 #form-log-in input[type="submit"],
 #form-log-in button {
-    width: 100%; /* Full width for buttons */
+    width: 100%;
 }
 /* Container for the layout */
 .container {
-    display: flex; /* Use flexbox for layout */
-    height: calc(100vh - 5rem); /* Full height minus header/footer */
+    display: flex;
+    height: calc(100vh - 5rem);
 }
 
 /* Left panel styles */
 .left-panel {
-    flex: 1; /* Takes up 1 part of the available space */
-    background-color: #f4f4f4; /* Light gray background */
-    padding: 20px; /* Padding around the content */
-    overflow-y: auto; /* Scroll if content overflows */
+    flex: 1;
+    background-color: #f4f4f4;
+    padding: 20px;
+    overflow-y: auto;
 }
 
 /* Right panel styles */
 .right-panel {
-    flex: 2; /* Takes up 2 parts of the available space */
-    background-color: #ffffff; /* White background for right panel */
-    padding: 20px; /* Padding around the content */
-    overflow-y: auto; /* Scroll if content overflows */
+    flex: 2;
+    background-color: #ffffff;
+    padding: 20px;
+    overflow-y: auto;
 }
 
 /* Landing Page Styles */
@@ -115,96 +115,98 @@ header {
 
 /* User Dashboard Styles */
 .user-dashboard {
-    margin-bottom: 20px; /* Space below the dashboard */
+    margin-bottom: 20px;
 }
 
 /* General Styles for the Add Product Section */
 .add-product {
-    background-color: #ffffff; /* White background for contrast */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
-    padding: 20px; /* Padding around the content */
-    max-width: 600px; /* Max width for the form */
-    margin: 20px auto; /* Center the form */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
 }
 
 /* Form Styles */
 #form-add-product {
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
+    flex-direction: column;
 }
 
 /* Form Group Styles */
 .form-group {
-    display: flex; /* Use flexbox for alignment */
-    flex-direction: column; /* Stack label and input vertically */
-    margin-bottom: 15px; /* Space between form groups */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 
 /* Label Styles */
 label {
-    margin-bottom: 5px; /* Space between label and input */
-    font-weight: bold; /* Bold labels */
-    color: #333; /* Darker text color */
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
 }
 
 /* Input and Select Styles */
 input[type="text"],
+input[type="password"],
 input[type="number"],
 select {
-    padding: 10px; /* Padding inside inputs */
-    border: 1px solid #ccc; /* Light border */
-    border-radius: 4px; /* Rounded corners */
-    font-size: 16px; /* Font size */
-    transition: border-color 0.3s; /* Smooth transition for border color */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
 }
 
 /* Input Focus Styles */
 input[type="text"]:focus,
+input[type="password"]:focus,
 input[type="number"]:focus,
 select:focus {
-    border-color: #4CAF50; /* Change border color on focus */
-    outline: none; /* Remove default outline */
+    border-color: #4CAF50;
+    outline: none;
 }
 
 /* Button Styles */
 input[type="submit"], 
 button {
-    padding: 10px 15px; /* Padding for buttons */
-    border: none; /* Remove default border */
-    border-radius: 4px; /* Rounded corners */
-    background-color: #007bff; /* Primary button color */
-    color: white; /* Text color */
-    font-size: 16px; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    margin-top: 10px; /* Space above buttons */
-    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 /* Button Hover Effect */
 input[type="submit"]:hover,
 button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-    transform: translateY(-2px); /* Slight lift effect */
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 /* Checkbox Styles */
 input[type="checkbox"] {
-    margin-top: 5px; /* Space above checkbox */
+    margin-top: 5px;
 }
 
 /* Additional Styles for Update and Delete Sections */
 #update, .delete {
-    margin-top: 20px; /* Space above update and delete sections */
-    padding: 15px; /* Padding for better spacing */
-    background-color: #f9f9f9; /* Light background for contrast */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Display Table Styles */
 .display-table {
-    width: 100%; /* Full width for the table section */
+    width: 100%;
     padding: 20px;
 }
 
@@ -216,30 +218,30 @@ input[type="checkbox"] {
 
 /* Table Header Styles */
 #dynamic-table th {
-    background-color: #4CAF50; /* Green background for header */
-    color: white; /* White text for header */
-    padding: 10px; /* Padding for header cells */
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
 }
 
 /* Table Cell Styles */
 #dynamic-table td {
-    border: 1px solid #ccc; /* Light border */
-    padding: 8px; /* Padding for cells */
-    text-align: left; /* Left align text */
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
 }
 
 /* History Log Styles */
 .history-log {
     padding: 20px;
-    background-color: #ffffff; /* White background for log section */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Footer Styles */
 footer {
     text-align: center;
-    background-color: #4CAF50; /* Green background */
+    background-color: #4CAF50;
     color: white;
     padding: 10px 0;
     position: relative;
@@ -250,11 +252,11 @@ footer {
 /* Responsive Styles */
 @media (max-width: 768px) {
     .container {
-        flex-direction: column; /* Stack panels vertically on small screens */
+        flex-direction: column;
     }
     .left-panel, .right-panel {
-        width: 100%; /* Full width on smaller screens */
-        float: none; /* Remove float */
+        width: 100%;
+        float: none;
     }
 }
 

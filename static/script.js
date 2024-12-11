@@ -80,6 +80,22 @@ document.addEventListener('DOMContentLoaded', function() {
         section.classList.remove("hidden");
     });
 
+
+    document.getElementById("button-log-out").addEventListener('click', async function logout() {
+        console.log("logout pressed")
+        const response = await fetch('/logout');
+        if (response.ok) {
+            alert('Logged out successfully.');
+            location.reload();
+
+            const section = document.getElementById("user-dash");
+            section.classList.add("hidden");
+        } else {
+            alert('Error logging out.');
+        }
+
+    });
+
     // Add product button click event
     document.getElementById('button-add').addEventListener('click', async function(event) {
         event.preventDefault(); // Prevent default form submission
@@ -173,16 +189,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    document.getElementById("button-log-out").addEventListener('click', async function(event) {
-        event.preventDefault();
-        const response = await fetch('/logout', { method: 'POST' });
-        if (response.ok) {
-            alert('Logged out successfully.');
-            location.reload();
-        } else {
-            alert('Error logging out.');
-        }
-    });
 
     async function submitCreateAccountForm(event) {
         event.preventDefault(); // Prevent the default form submission
@@ -211,6 +217,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Attach the submit function to the form
     document.getElementById('create-account-form').addEventListener('submit', submitCreateAccountForm);
+
+    document.getElementById('create-cancel').addEventListener('click', function hideCreateAccountForm() {
+        document.getElementById('create-account-form').classList.add('hidden');
+    });
 
     document.getElementById('create-account').addEventListener('click', function showCreateAccountForm() {
         document.getElementById('create-account-form').classList.remove('hidden');
