@@ -6,7 +6,7 @@
 
 **Front-end:** HTML, CSS
 
-**Back-end:** PyScript
+**Back-end:** Python (Flask), JavaScript
 
 **Database:** MySQL
 
